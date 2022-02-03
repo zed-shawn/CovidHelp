@@ -33,7 +33,7 @@ export default function CustomDrawer() {
   ];
 
   const drawerItems = ({item, index}) => (
-    <TouchableOpacity style={{marginLeft: 27, marginVertical: 20}} onPress={}>
+    <TouchableOpacity style={{marginLeft: 27, marginVertical: 20}} >
       <Text style={{fontSize: 18}}>{item.name}</Text>
     </TouchableOpacity>
   );
