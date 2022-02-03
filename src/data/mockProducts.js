@@ -28,7 +28,7 @@ export const products = [
     234,
     0,
     'https://res.cloudinary.com/fsduhag8/image/upload/v1643837365/foodlabsx/1.jpg',
-    21,
+    1,
     4,
   ),
   new Listing(
@@ -44,7 +44,7 @@ export const products = [
   new Listing(
     5,
     'PPE Kit',
-    ' Unused PPE kit for giveaway, in fully sealed condition.',
+    ' Unused PPE kit for giveaway, in fully sealed condn.Unused PPE kit for giveaway, in fully sealed condition.Unused PPE kit for giveaway, in fully sealed condition.Unused PPE kit for giveaway, in fully sealed condition.Unused PPE kit for giveaway, in fully sealed condition.Unused PPE kit for giveaway, in fully sealed condition.Unused PPE kit for giveaway, in fully sealed condition.',
     0,
     3,
     'https://res.cloudinary.com/fsduhag8/image/upload/v1643837365/foodlabsx/1.jpg',

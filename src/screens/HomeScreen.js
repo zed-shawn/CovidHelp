@@ -1,15 +1,27 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, Dimensions} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Dimensions,
+  TouchableOpacity,
+} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import {products} from '../data/mockProducts';
+import {useNavigation} from '@react-navigation/native';
 
 const height = Dimensions.get('screen').height;
 
 export default function HomeScreen() {
+  const navigation = useNavigation();
   const renderItems = itemData => {
     const item = itemData.item;
     return (
-      <View
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('Details', {item});
+        }}
         style={{
           height: height / 3,
           //borderBottomWidth: 1,
@@ -56,14 +68,15 @@ export default function HomeScreen() {
               alignItems: 'flex-end',
             }}>
             <Text style={{fontSize: 13, fontWeight: '600', color: 'gray'}}>
-              {item.reach} reach
+              {item.reach}{' '}
+              {item.reach == 0 || item.reach == 1 ? 'reach' : 'reaches'}
             </Text>
             <Text style={{fontSize: 25, fontWeight: '600', color: 'gray'}}>
               {item.price == 0 ? 'For donation' : `₹ ${item.price}`}
             </Text>
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   };
   return (
