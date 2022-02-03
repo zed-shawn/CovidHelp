@@ -40,8 +40,8 @@ export default function HomeScreen() {
               {item.title}
             </Text>
             <View style={{alignItems: 'flex-end'}}>
-              <Text style={{fontSize: 13, fontWeight: '300', color: '#3d3d3d'}}>
-                Posted 10 hrs ago
+              <Text style={{fontSize: 13, fontWeight: '400', color: '#3d3d3d'}}>
+                Posted {item.postTime} hrs ago
               </Text>
               <Text style={{fontSize: 12, fontWeight: '600', color: 'gray'}}>
                 {item.location} KM away
@@ -55,11 +55,11 @@ export default function HomeScreen() {
               justifyContent: 'space-between',
               alignItems: 'flex-end',
             }}>
+            <Text style={{fontSize: 13, fontWeight: '600', color: 'gray'}}>
+              {item.reach} reach
+            </Text>
             <Text style={{fontSize: 25, fontWeight: '600', color: 'gray'}}>
               {item.price == 0 ? 'For donation' : `₹ ${item.price}`}
-            </Text>
-            <Text style={{fontSize: 13, fontWeight: '600', color: 'gray'}}>
-              View Details
             </Text>
           </View>
         </View>

@@ -6,7 +6,12 @@ const Stack = createStackNavigator();
 
 function MainStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        title: 'CovidHelp',
+        headerStyle: {justifyContent: 'center'},
+        headerTitleAlign: 'center',
+      }}>
       <Stack.Screen name="Home" component={HomeScreen} />
     </Stack.Navigator>
   );
