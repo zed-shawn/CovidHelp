@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput, Button} from 'react-native';
+import {View, Text, TextInput, Button, ToastAndroid} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import * as userActions from '../state/userDetail';
 import * as imageActions from '../state/imageHandling';
@@ -16,14 +16,15 @@ export default function LoginScreen() {
     if (enteredName && enteredNumber && image) {
       dispatch(userActions.registerUser(enteredName, enteredNumber, image[0]));
       dispatch(imageActions.clearMedia());
+    } else {
+      ToastAndroid.showWithGravityAndOffset(
+        'Please enter all fields',
+        ToastAndroid.SHORT,
+        ToastAndroid.BOTTOM,
+        0,
+        100,
+      );
     }
-    ToastAndroid.showWithGravityAndOffset(
-      'Please enter all fields',
-      ToastAndroid.SHORT,
-      ToastAndroid.BOTTOM,
-      0,
-      100,
-    );
   };
 
   return (
