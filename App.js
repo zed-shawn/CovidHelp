@@ -20,9 +20,9 @@ const App = () => {
   const getLogin = async () => {
     const state = await AsyncStorage.getItem('loggedIn');
     if (state == 'true') {
-      dispatch(userActions.toggleLogIn(true));
-      SplashScreen.hide();
+      dispatch(userActions.loadUser());
     }
+    SplashScreen.hide();
   };
   useEffect(() => {
     getLogin();

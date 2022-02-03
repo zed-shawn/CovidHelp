@@ -1,11 +1,12 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import ReduxThunk from "redux-thunk";
+import {createStore, combineReducers, applyMiddleware} from 'redux';
+import ReduxThunk from 'redux-thunk';
 
 //import chatReducer from "./chatEngine";
-import userReducer from "./userDetail";
+import userReducer from './userDetail';
+import imageReducer from './imageHandling';
 
 const rootReducer = combineReducers({
-  //chat: chatReducer,
+  image: imageReducer,
   user: userReducer,
 });
 

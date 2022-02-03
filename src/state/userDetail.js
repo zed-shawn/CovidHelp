@@ -10,6 +10,7 @@ const initialState = {
 };
 
 const REGISTER_USER = 'registerUser';
+const LOAD_USER = 'loadUser';
 const TOGGLE_LOG_IN = 'toggleLogIn';
 
 export function registerUser(name, number, imageUri) {
@@ -31,6 +32,25 @@ export function registerUser(name, number, imageUri) {
         imageUri,
       },
     });
+  };
+}
+export function loadUser() {
+  return async dispatch => {
+    try {
+      const name = AsyncStorage.getItem('userName');
+      const number = AsyncStorage.getItem('userNumber');
+      const imageUri = AsyncStorage.getItem('userImage');
+      dispatch({
+        type: LOAD_USER,
+        payload: {
+          name,
+          number,
+          imageUri,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 }
 
@@ -59,6 +79,13 @@ const userReducer = (state = initialState, action) => {
         imageUri: action.payload.imageUri,
       };
       return {...state, userDetail: newUserDetail, loggedIn: true};
+    case LOAD_USER:
+      const loadUserDetail = {
+        name: action.payload.name,
+        phone: action.payload.number,
+        imageUri: action.payload.imageUri,
+      };
+      return {...state, userDetail: loadUserDetail, loggedIn: true};
     case TOGGLE_LOG_IN:
       return {...state, loggedIn: action.payload.state};
     default:

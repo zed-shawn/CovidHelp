@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, TextInput, Button} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import * as userActions from '../state/userDetail';
+import LoadMediaComponent from '../components/LoadMediaComponent';
 
 export default function LoginScreen() {
   const dispatch = useDispatch();
@@ -48,6 +49,7 @@ export default function LoginScreen() {
         value={enteredNumber}
       />
       <Text>Select Image</Text>
+      <LoadMediaComponent type="photo" selectionLimit={1} />
       <Button title={'Submit'} onPress={clickHandler} />
     </View>
   );
