@@ -6,6 +6,7 @@ import ItemDetailsScreen from '../screens/ItemDetailsScreen';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import CustomDrawer from './CustomDrawer';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import AddListing from '../screens/AddListing';
 
 const Stack = createStackNavigator();
 
@@ -45,6 +46,7 @@ function DrawerNavigator() {
         ),
       }}>
       <Drawer.Screen name="Stack" component={MainStack} />
+      <Drawer.Screen name="AddListing" component={AddListing} />
     </Drawer.Navigator>
   );
 }

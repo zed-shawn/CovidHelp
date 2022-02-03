@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {
   View,
   Text,
@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import {products} from '../data/mockProducts';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useIsFocused} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useSelector, useDispatch} from 'react-redux';
 import * as shopActions from '../state/shopHandler';
@@ -20,6 +20,11 @@ export default function HomeScreen() {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const forceUpdate = React.useReducer(() => ({}), {})[1];
+  const isFocused = useIsFocused();
+
+  useEffect(() => {
+    forceUpdate();
+  }, [isFocused]);
 
   const dispatchUpvote = useCallback(
     data => {

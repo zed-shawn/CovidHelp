@@ -35,7 +35,11 @@ export default function CustomDrawer() {
     },
   ];
   const drawerItems = ({item, index}) => (
-    <TouchableOpacity style={{marginLeft: 27, marginVertical: 20}}>
+    <TouchableOpacity
+      style={{marginLeft: 27, marginVertical: 20}}
+      onPress={() => {
+        item.name === 'Post an Item' ? navigation.navigate('AddListing') : null;
+      }}>
       <Text style={{fontSize: 18}}>{item.name}</Text>
     </TouchableOpacity>
   );

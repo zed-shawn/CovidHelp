@@ -38,9 +38,9 @@ export function loadListings(data) {
 export function addListing(title, description, price, imageUri) {
   return async (dispatch, getState) => {
     try {
-      const location = Math.random() * 50;
+      const location = parseInt(Math.random() * 50);
       const reach = 1;
-      const postTime = new Date().now();
+      const postTime = 0;
       const id = getState().shop.activeListings.length + 1;
       const upvote = true;
 
@@ -100,7 +100,8 @@ const shopReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_LISTING:
       let newData = state.activeListings;
-      newData.push(action.payload.data.data);
+      console.log('newData', newData);
+      newData.unshift(action.payload.data);
       return {...state, activeListings: newData};
     case LOAD_LISTINGS:
       return {...state, activeListings: action.payload.arr};

@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useState} from 'react';
 import {View, Text, Image, ScrollView, Button} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useSelector, useDispatch} from 'react-redux';
@@ -7,6 +7,8 @@ import * as shopActions from '../state/shopHandler';
 export default function ItemDetailsScreen({route}) {
   const dispatch = useDispatch();
   const forceUpdate = React.useReducer(() => ({}), {})[1];
+
+  const [cartText, setCartText] = useState('ADD TO CART');
 
   const itemData = route.params.item;
   const dispatchUpvote = useCallback(
@@ -35,11 +37,10 @@ export default function ItemDetailsScreen({route}) {
             }}
           />
         </View>
-        <View style={{marginHorizontal: '2%'}}>
+        <View style={{marginHorizontal: '3%', paddingBottom: '3%'}}>
           <Text style={{fontSize: 30, color: 'black', fontWeight: '600'}}>
             {itemData.title}
           </Text>
-          <Text>{itemData.description}</Text>
           <Text>{itemData.description}</Text>
         </View>
       </ScrollView>
@@ -81,7 +82,11 @@ export default function ItemDetailsScreen({route}) {
             }}
           />
         </View>
-        <Button title="Add to Cart" color={'#e6e640'} />
+        <Button
+          title={cartText}
+          color={'#e6e640'}
+          onPress={() => setCartText('ADDED TO CART')}
+        />
       </View>
     </View>
   );

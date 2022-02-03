@@ -15,7 +15,15 @@ export default function LoginScreen() {
   const clickHandler = () => {
     if (enteredName && enteredNumber && image) {
       dispatch(userActions.registerUser(enteredName, enteredNumber, image[0]));
+      dispatch(imageActions.clearMedia());
     }
+    ToastAndroid.showWithGravityAndOffset(
+      'Please enter all fields',
+      ToastAndroid.SHORT,
+      ToastAndroid.BOTTOM,
+      0,
+      100,
+    );
   };
 
   return (
