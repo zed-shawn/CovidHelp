@@ -33,6 +33,7 @@ export default function HomeScreen() {
           elevation: 3,
           borderBottomWidth: 1,
           borderBottomColor: 'gray',
+          backgroundColor: '#e6e6e6',
         }}>
         <View style={{flex: 7}}>
           <Image
@@ -87,5 +88,5 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  root: {flex: 1},
+  root: {flex: 1, backgroundColor: 'beige'},
 });

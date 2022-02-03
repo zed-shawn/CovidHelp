@@ -38,7 +38,7 @@ export default function ItemDetailsScreen({route}) {
           {itemData.reach}{' '}
           {itemData.reach == 0 || itemData.reach == 1 ? 'reach' : 'reaches'}
         </Text>
-        <Button title="Add to Cart" color={'red'} />
+        <Button title="Add to Cart" color={'#e6e640'} />
       </View>
     </View>
   );

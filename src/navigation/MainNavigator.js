@@ -32,6 +32,10 @@ function DrawerNavigator() {
       screenOptions={{
         title: 'CovidHelp',
         headerTitleAlign: 'center',
+        headerTintColor: 'white',
+        headerStyle: {
+          backgroundColor: '#e6e640',
+        },
       }}>
       <Drawer.Screen name="Stack" component={MainStack} />
     </Drawer.Navigator>
