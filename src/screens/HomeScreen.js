@@ -10,6 +10,7 @@ import {
 import {FlatList} from 'react-native-gesture-handler';
 import {products} from '../data/mockProducts';
 import {useNavigation} from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const height = Dimensions.get('screen').height;
 
@@ -68,10 +69,25 @@ export default function HomeScreen() {
               justifyContent: 'space-between',
               alignItems: 'flex-end',
             }}>
-            <Text style={{fontSize: 13, fontWeight: '600', color: 'gray'}}>
-              {item.reach}{' '}
-              {item.reach == 0 || item.reach == 1 ? 'reach' : 'reaches'}
-            </Text>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <Icon
+                name="keyboard-arrow-up"
+                color={'gray'}
+                size={30}
+                onPress={() => {
+                  console.log('clicked');
+                }}
+              />
+              <View style={{alignItems: 'center'}}>
+                <Text style={{fontSize: 18, fontWeight: '600', color: 'gray'}}>
+                  {item.reach}
+                </Text>
+                <Text style={{fontSize: 12, fontWeight: '600', color: 'gray'}}>
+                  {item.reach == 0 || item.reach == 1 ? 'reach' : 'reaches'}
+                </Text>
+              </View>
+              <Icon name="keyboard-arrow-down" color={'gray'} size={30} />
+            </View>
             <Text style={{fontSize: 25, fontWeight: '600', color: 'gray'}}>
               {item.price == 0 ? 'For donation' : `₹ ${item.price}`}
             </Text>

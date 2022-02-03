@@ -1,9 +1,11 @@
 import React from 'react';
+import {View, Text} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
 import ItemDetailsScreen from '../screens/ItemDetailsScreen';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import CustomDrawer from './CustomDrawer';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const Stack = createStackNavigator();
 
@@ -36,6 +38,11 @@ function DrawerNavigator() {
         headerStyle: {
           backgroundColor: '#e6e640',
         },
+        headerRight: () => (
+          <View style={{paddingRight: '5%'}}>
+            <Icon name="shopping-cart" size={20} color={'white'} />
+          </View>
+        ),
       }}>
       <Drawer.Screen name="Stack" component={MainStack} />
     </Drawer.Navigator>
