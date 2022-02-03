@@ -6,6 +6,7 @@ import {useSelector, useDispatch} from 'react-redux';
 export default function CustomDrawer() {
   const navigation = useNavigation();
   const name = useSelector(state => state.user.userDetail.name['_j']);
+  const image = useSelector(state => state.user.userDetail.imageUri['_j']);
 
   const drawerComponents = [
     {
@@ -60,7 +61,7 @@ export default function CustomDrawer() {
           }}>
           <Image
             source={{
-              uri: 'https://res.cloudinary.com/fsduhag8/image/upload/v1643837365/foodlabsx/1.jpg',
+              uri: image,
             }}
             style={{width: 74, height: 74, borderRadius: 37, marginRight: 18}}
           />

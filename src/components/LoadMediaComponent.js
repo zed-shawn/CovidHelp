@@ -45,7 +45,7 @@ const LoadMediaComponent = props => {
               dispatchLoadedMedia(copy, copyRaw);
               //setLoadedMedia(copy);
               //setLoadedMediaRaw(copyRaw);
-              props.uriSetter(copyRaw);
+              //props.uriSetter(copyRaw);
               forceUpdate();
             }
           });

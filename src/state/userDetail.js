@@ -78,6 +78,7 @@ const userReducer = (state = initialState, action) => {
         phone: action.payload.number,
         imageUri: action.payload.imageUri,
       };
+      console.log('gets here', newUserDetail);
       return {...state, userDetail: newUserDetail, loggedIn: true};
     case LOAD_USER:
       const loadUserDetail = {
