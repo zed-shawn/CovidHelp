@@ -8,36 +8,32 @@ export default function CustomDrawer() {
   const drawerComponents = [
     {
       name: 'Post an Item',
-      screen: '',
     },
     {
       name: 'Your Items',
-      screen: '',
     },
     {
       name: 'Messages',
-      screen: 'ChatStack',
     },
     {
       name: 'Settings',
-      screen: '',
     },
     {
       name: 'Saved',
-      screen: '',
     },
     {
       name: 'Help & Support',
-      screen: '',
     },
     {
       name: 'FAQs',
-      screen: '',
+    },
+    {
+      name: 'Logout',
     },
   ];
 
   const drawerItems = ({item, index}) => (
-    <TouchableOpacity style={{marginLeft: 27, marginVertical: 20}}>
+    <TouchableOpacity style={{marginLeft: 27, marginVertical: 20}} onPress={}>
       <Text style={{fontSize: 18}}>{item.name}</Text>
     </TouchableOpacity>
   );
