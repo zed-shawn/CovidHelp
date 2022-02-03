@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {
   View,
   Text,
@@ -11,11 +11,31 @@ import {FlatList} from 'react-native-gesture-handler';
 import {products} from '../data/mockProducts';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {useSelector, useDispatch} from 'react-redux';
+import * as shopActions from '../state/shopHandler';
 
 const height = Dimensions.get('screen').height;
 
 export default function HomeScreen() {
+  const dispatch = useDispatch();
   const navigation = useNavigation();
+  const forceUpdate = React.useReducer(() => ({}), {})[1];
+
+  const dispatchUpvote = useCallback(
+    data => {
+      dispatch(shopActions.upvoteHandler(data));
+    },
+    [dispatch],
+  );
+  const dispatchDownvote = useCallback(
+    data => {
+      dispatch(shopActions.downvoteHandler(data));
+    },
+    [dispatch],
+  );
+
+  const listings = useSelector(state => state.shop.activeListings);
+
   const renderItems = itemData => {
     const item = itemData.item;
     return (
@@ -72,21 +92,35 @@ export default function HomeScreen() {
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <Icon
                 name="keyboard-arrow-up"
-                color={'gray'}
+                color={item.upvote ? 'orange' : 'gray'}
                 size={30}
                 onPress={() => {
-                  console.log('clicked');
+                  dispatchUpvote(item.id);
+                  forceUpdate();
                 }}
               />
               <View style={{alignItems: 'center'}}>
-                <Text style={{fontSize: 18, fontWeight: '600', color: 'gray'}}>
+                <Text
+                  style={{
+                    fontSize: 18,
+                    fontWeight: '600',
+                    color: 'gray',
+                  }}>
                   {item.reach}
                 </Text>
                 <Text style={{fontSize: 12, fontWeight: '600', color: 'gray'}}>
                   {item.reach == 0 || item.reach == 1 ? 'reach' : 'reaches'}
                 </Text>
               </View>
-              <Icon name="keyboard-arrow-down" color={'gray'} size={30} />
+              <Icon
+                name="keyboard-arrow-down"
+                color={item.upvote == false ? 'orange' : 'gray'}
+                size={30}
+                onPress={() => {
+                  dispatchDownvote(item.id);
+                  forceUpdate();
+                }}
+              />
             </View>
             <Text style={{fontSize: 25, fontWeight: '600', color: 'gray'}}>
               {item.price == 0 ? 'For donation' : `₹ ${item.price}`}
@@ -98,7 +132,7 @@ export default function HomeScreen() {
   };
   return (
     <View style={styles.root}>
-      <FlatList data={products} renderItem={renderItems} />
+      <FlatList data={listings} renderItem={renderItems} />
     </View>
   );
 }

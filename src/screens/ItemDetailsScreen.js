@@ -1,9 +1,26 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {View, Text, Image, ScrollView, Button} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {useSelector, useDispatch} from 'react-redux';
+import * as shopActions from '../state/shopHandler';
 
 export default function ItemDetailsScreen({route}) {
+  const dispatch = useDispatch();
+  const forceUpdate = React.useReducer(() => ({}), {})[1];
+
   const itemData = route.params.item;
+  const dispatchUpvote = useCallback(
+    data => {
+      dispatch(shopActions.upvoteHandler(data));
+    },
+    [dispatch],
+  );
+  const dispatchDownvote = useCallback(
+    data => {
+      dispatch(shopActions.downvoteHandler(data));
+    },
+    [dispatch],
+  );
   return (
     <View style={{flex: 1}}>
       <ScrollView style={{flex: 1}}>
@@ -39,10 +56,11 @@ export default function ItemDetailsScreen({route}) {
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <Icon
             name="keyboard-arrow-up"
-            color={'gray'}
+            color={itemData.upvote ? 'orange' : 'gray'}
             size={30}
             onPress={() => {
-              console.log('clicked');
+              dispatchUpvote(itemData.id);
+              forceUpdate();
             }}
           />
           <View style={{alignItems: 'center'}}>
@@ -55,10 +73,11 @@ export default function ItemDetailsScreen({route}) {
           </View>
           <Icon
             name="keyboard-arrow-down"
-            color={'gray'}
+            color={itemData.upvote == false ? 'orange' : 'gray'}
             size={30}
             onPress={() => {
-              console.log('clicked');
+              dispatchDownvote(itemData.id);
+              forceUpdate();
             }}
           />
         </View>

@@ -8,6 +8,7 @@ class Listing {
     imageUri,
     reach,
     postTime,
+    upvote,
   ) {
     (this.id = id),
       (this.title = title),
@@ -16,7 +17,8 @@ class Listing {
       (this.location = location),
       (this.imageUri = imageUri),
       (this.reach = reach),
-      (this.postTime = postTime);
+      (this.postTime = postTime),
+      (this.upvote = upvote);
   }
 }
 

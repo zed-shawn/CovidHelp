@@ -10,6 +10,7 @@ export const products = [
     'https://res.cloudinary.com/fsduhag8/image/upload/v1643837365/foodlabsx/1.jpg',
     21,
     12,
+    true,
   ),
   new Listing(
     2,
@@ -20,6 +21,7 @@ export const products = [
     'https://res.cloudinary.com/fsduhag8/image/upload/v1643837365/foodlabsx/1.jpg',
     32,
     2,
+    undefined,
   ),
   new Listing(
     3,
@@ -30,6 +32,7 @@ export const products = [
     'https://res.cloudinary.com/fsduhag8/image/upload/v1643837365/foodlabsx/1.jpg',
     1,
     4,
+    true,
   ),
   new Listing(
     4,
@@ -40,6 +43,7 @@ export const products = [
     'https://res.cloudinary.com/fsduhag8/image/upload/v1643837365/foodlabsx/1.jpg',
     -12,
     6,
+    true,
   ),
   new Listing(
     5,
@@ -50,6 +54,7 @@ export const products = [
     'https://res.cloudinary.com/fsduhag8/image/upload/v1643837365/foodlabsx/1.jpg',
     3,
     3,
+    false,
   ),
 ];
 
