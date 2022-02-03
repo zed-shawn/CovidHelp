@@ -8,6 +8,7 @@ import store from './src/state/store';
 import {useSelector, useDispatch} from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as userActions from './src/state/userDetail';
+import SplashScreen from 'react-native-splash-screen';
 
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
@@ -20,6 +21,7 @@ const App = () => {
     const state = await AsyncStorage.getItem('loggedIn');
     if (state == 'true') {
       dispatch(userActions.toggleLogIn(true));
+      SplashScreen.hide();
     }
   };
   useEffect(() => {
